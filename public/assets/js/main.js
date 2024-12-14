@@ -1,3 +1,19 @@
+$( document ).ready(function() {
+    if(theme) {
+        let currTheme = $('body').hasClass('bg-theme-dark'); 
+        if (currTheme == theme) {
+            return;
+        }
+        if (theme == 'dark') {
+            $('body').addClass('bg-theme-dark');
+            $('#toggleDarkMode').prop('checked', true);
+        } else {
+            $('body').removeClass('bg-theme-dark');
+            $('#toggleDarkMode').prop('checked', false);
+        }
+    }
+});
+
 $('#btnShowPassword').click(function(e){
     const pwd = $('#txtLoginPwd');
     if (e.target.innerHTML === 'Show') {
@@ -11,6 +27,11 @@ $('#btnShowPassword').click(function(e){
 
 $('#toggleDarkMode').change(function(){
     $('body').toggleClass('bg-theme-dark');
+    if($('body').hasClass('bg-theme-dark')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
 });
 
 

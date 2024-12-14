@@ -10,6 +10,12 @@
 
 </head>
 <body>
+    <script>
+        const theme = localStorage.getItem('theme');
+        if (theme && theme === 'dark') {
+            document.body.classList.add('bg-theme-dark');
+        }
+    </script>
     <x-navbar/>
     @yield('main')
     <script src="assets/js/jquery-3.7.1.min.js"></script>
