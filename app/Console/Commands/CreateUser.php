@@ -3,6 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 
 class CreateUser extends Command
 {
@@ -25,7 +28,7 @@ protected $signature = 'app:create-user {user-data}';
             'name' => 'required|string|min:1|max:255',
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|max:255',
-            'role' => 'required|in:writer,admin',
+            'role' => 'required|in:ADMIN,WRITER,USER,MEMBER',
         ]);
 
         if ($validator->fails()) {
@@ -39,6 +42,7 @@ protected $signature = 'app:create-user {user-data}';
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
+            'role_code' => $validated['role']
         ]);
 
         $user->email_verified_at = now();

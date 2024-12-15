@@ -1,22 +1,22 @@
 @extends('base_view')
 
 @section('main')
-    @if($errors->any())
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <ul>
-                {!! implode('', $errors->all('<li>:message</li>')) !!}
-            </ul>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
     <div class="container min-vh-100 pt-3">
         <div class="row ">
             <div class="col d-none d-md-block">
                 <h1>This is Banner</h1>
             </div>
             <div class="col-md">
+                @if($errors->any())
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <ul class="m-0">
+                            {!! implode('', $errors->all('<li>:message</li>')) !!}
+                        </ul>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <h1 class="text-center">Login</h1>
                 <form action="{{route('auth.login.action', absolute: false)}}" method="post">
                     @csrf
