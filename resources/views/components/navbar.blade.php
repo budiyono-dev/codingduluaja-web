@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -27,7 +27,7 @@
                     <a class="nav-link disabled">Disabled</a>
                 </li>
             </ul>
-            <div class="custom-control custom-switch toggle-dark-mode">
+            <div class="custom-control custom-switch toggle-dark-mode pr-2">
                 <input type="checkbox" class="custom-control-input" id="toggleDarkMode">
                 <label class="custom-control-label" for="toggleDarkMode">Dark Mode</label>
             </div>
@@ -36,11 +36,24 @@
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form> --}}
-            @auth()
+            @auth
             <form action="{{route('auth.logout.action', absolute:false)}}">
                 @csrf
                 <button class="btn btn-primary btn-sm" >Logout</button>
             </form>
             @endauth
+            @guest
+            @if(request()->route()->getName() !== 'auth.login.page')
+           <div class="vr"></div> 
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                <a href="{{route('auth.login.page', absolute:false)}}"
+                    class ="nav-link">
+                Login
+                </a>
+                </li>
+            </ul>
+            @endif
+            @endguest
         </div>
     </nav>

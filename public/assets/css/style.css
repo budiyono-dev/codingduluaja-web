@@ -52,3 +52,7 @@ html, body {
     background-color: var(--cda-black);
     color: var(--cda-white);
 }
+.cda-white {
+    color: var(--cda-white);
+}
+
