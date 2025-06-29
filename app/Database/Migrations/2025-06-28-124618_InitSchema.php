@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Database\Migrations;
+
+use CodeIgniter\Database\Migration;
+
+class InitSchema extends Migration
+{
+    public function up()
+    {
+		$this->db->query("
+			CREATE TABLE IF NOT EXISTS USERS (
+				ID INTEGER PRIMARY KEY AUTOINCREMENT,
+				NAME VARCHAR(200) NOT NULL,
+				EMAIL VARCHAR(200) NOT NULL UNIQUE,
+				PASSWORD VARCHAR(100) NOT NULL,
+				CREATED_AT DATETIME NOT NULL,
+				UPDATED_AT DATETIME NOT NULL
+			)
+		");
+    }
+
+    public function down()
+    {
+        //
+    }
+}
