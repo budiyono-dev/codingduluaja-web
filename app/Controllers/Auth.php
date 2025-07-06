@@ -7,11 +7,11 @@ class Auth extends BaseController {
         return view();
     }
 	public function pageRegister(){
-		return view('register');
+		return view('adm/main');
 	}
 	
 	public function pageLogin(){
-		return view('login');
+		return view('login',['title' =>'Login']);
 	}
 	
 	public function login(){
