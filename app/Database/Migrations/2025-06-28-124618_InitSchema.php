@@ -18,6 +18,15 @@ class InitSchema extends Migration
 				UPDATED_AT DATETIME NOT NULL
 			)
 		");
+
+		$this->db->query("
+				CREATE TABLE IF NOT EXISTS `CI_SESSIONS` (
+				`ID` VARCHAR(128) NOT NULL,
+				`IP_ADDRESS` VARCHAR(45) NOT NULL,
+				`TIMESTAMP` DATETIME PRIMARY KEY DEFAULT CURRENT_TIMESTAMP NOT NULL,
+				`DATA` BLOB NOT NULL 
+				);
+		");
     }
 
     public function down()
